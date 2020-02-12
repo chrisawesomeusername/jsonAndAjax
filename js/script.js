@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 //ajax method
 $.ajax({
-  url:'js/MOCK_DATA.json',
+  url:'https://my.api.mockaroo.com/plant.json?key=94ee26f0',
   type:'GET',
   data:'json',
   success:function(data){
@@ -87,14 +87,15 @@ $.ajax({
     var i;
     for (i = 0; i < data.length; i++) {
       document.getElementById('result').innerHTML +=
-      '<div class="card col-md-3" style="width: 16rem;">' +
-        '<img src="' + data[i].avatar + '" class="card-img-top" alt="...">' +
-        '<div class="card-body">' +
-          '<h5 class="card-title">' + data[i].first_name + ' ' + data[i].last_name + ' </h5>' +
-          '<p class="card-text">' + data[i].email + '</p>' +
-          '<p class="card-text">' + data[i].gender + '</p>' +
-          '<a href="#" class="btn btn-primary">Profile</a>' +
-        '</div>' +
+        '<div class="card">' +
+          '<img class="card-img-top" src="' + data[i].image + '" alt="...">' +
+          '<div class="card-body">' +
+            '<h5 class="card-title">' + data[i].plant_name + '</h5>' +
+            '<p class="card-text">' + data[i].scientific_name + '</p>' +
+            '<p class="card-text">' + data[i].plant_family + '</p>' +
+          '</div>' +
+          '<div class="card-footer">' +
+          '<small class="text-muted">PLANTS</small>' +
       '</div>'
     }
 
