@@ -78,31 +78,46 @@ $(document).ready(function(){
 // };
 
 //ajax method
+// $.ajax({
+//   url:'https://my.api.mockaroo.com/plant.json?key=94ee26f0',
+//   type:'GET',
+//   data:'json',
+//   success:function(data){
+//     console.log(data);
+//     var i;
+//     for (i = 0; i < data.length; i++) {
+//       document.getElementById('result').innerHTML +=
+//         '<div class="card">' +
+//           '<img class="card-img-top" src="' + data[i].image + '" alt="...">' +
+//           '<div class="card-body">' +
+//             '<h5 class="card-title">' + data[i].plant_name + '</h5>' +
+//             '<p class="card-text">' + data[i].scientific_name + '</p>' +
+//             '<p class="card-text">' + data[i].plant_family + '</p>' +
+//           '</div>' +
+//           '<div class="card-footer">' +
+//           '<small class="text-muted">PLANTS</small>' +
+//       '</div>'
+//     }
+//
+//   },//success end
+//
+//
+// });//ajax end
+
 $.ajax({
-  url:'https://my.api.mockaroo.com/plant.json?key=94ee26f0',
+  url:'https://api.unsplash.com/photos/random/?client_id=5df13735da95f53f2a31b3d098f4fd12c0dceba5f18fd2b145692b5827d200a3',
   type:'GET',
   data:'json',
   success:function(data){
     console.log(data);
-    var i;
-    for (i = 0; i < data.length; i++) {
-      document.getElementById('result').innerHTML +=
-        '<div class="card">' +
-          '<img class="card-img-top" src="' + data[i].image + '" alt="...">' +
-          '<div class="card-body">' +
-            '<h5 class="card-title">' + data[i].plant_name + '</h5>' +
-            '<p class="card-text">' + data[i].scientific_name + '</p>' +
-            '<p class="card-text">' + data[i].plant_family + '</p>' +
-          '</div>' +
-          '<div class="card-footer">' +
-          '<small class="text-muted">PLANTS</small>' +
-      '</div>'
-    }
+    console.log(data.urls.thumb);
+    document.getElementById('unsplash').innerHTML +=
+    '<img>' + data.urls.thumb + '</img>';
+  }
 
-  },//success end
-  error: function(){
-    console.log('error');
-  }//error end
-});//ajax end
+
+
+})
+
 
 });//document.ready ending
