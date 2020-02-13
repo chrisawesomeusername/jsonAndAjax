@@ -6,9 +6,60 @@ console.log('yessss');//tesing script.js
 
 //testing jquert function
 $(document).ready(function(){
-  $('body').click(function(){
-  $(this).css('color','white');
+
+var myKey = JSON.parse(apiKey);
+console.log(myKey[0]);
+myKey = myKey[0].key;
+console.log(myKey);
+
+//reading users choice
+document.getElementById('submit').addEventListener('click', function(){
+  endPoint = document.getElementById('endpoints').value;
+  size = document.getElementById('sizes').value;
+  console.log(endPoint,size);
+  displayData(endPoint,size);
 });
+
+function displayData(ep,si){
+  console.log(ep, si);
+
+
+  $.ajax({
+    url:`https://api.unsplash.com/${ep}/?client_id=${myKey}`,
+    type:'GET',
+    data:'json',
+    success:function(data){
+      console.log(data);
+      if (si === 'thumb') {
+        console.log(console.log(data[0].cover_photo.urls.thumb);
+      } else if (true) {
+
+      }
+
+      );
+      // console.log(data.urls.thumb);
+      // document.getElementById('unsplash').innerHTML +=
+      // '<img src="' + data.urls.regular + '" alt="unsplash"></img>';
+    },
+    error:function(){
+      console.log('error');
+    }
+  });//ajax end
+};
+  });//document.ready ending
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // //javascript data - array of objects
@@ -103,21 +154,3 @@ $(document).ready(function(){
 //
 //
 // });//ajax end
-
-$.ajax({
-  url:'https://api.unsplash.com/photos/random/?client_id=5df13735da95f53f2a31b3d098f4fd12c0dceba5f18fd2b145692b5827d200a3',
-  type:'GET',
-  data:'json',
-  success:function(data){
-    console.log(data);
-    console.log(data.urls.thumb);
-    document.getElementById('unsplash').innerHTML +=
-    '<img>' + data.urls.thumb + '</img>';
-  }
-
-
-
-})
-
-
-});//document.ready ending
